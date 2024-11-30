@@ -13,8 +13,8 @@ MainWindow::MainWindow(QWidget *parent)
     if (ui->loginButton == nullptr) {
         std::cout << "loginButton is nullptr!" << std::endl;
     }
-    network.readUsers("/Users/aadisudan/Desktop/CS62/socialnetwork/users.txt");
-    network.readPosts("/Users/aadisudan/Desktop/CS62/socialnetwork/posts.txt");
+    network.readUsers("users.txt");
+    network.readPosts("posts.txt");
 
     ui->profileLabel->setVisible(false);
     ui->returnButton->setVisible(false);
@@ -87,7 +87,7 @@ void MainWindow::privacyButtonClick() {
     int selectedPrivacy = ui->privacyDropdown->currentIndex();
     if (loggedInUser == displayedUser) {
         displayedUser->setPrivacy(selectedPrivacy);
-        network.writeUsers("/Users/aadisudan/Desktop/CS62/socialnetwork/users.txt");
+        network.writeUsers("users.txt");
     }
 }
 
@@ -239,6 +239,6 @@ void MainWindow::addFriendButtonClick(){
     std::string theirName = displayedUser->getName();
     if (yourName != theirName){
         network.addConnection(yourName, theirName);
-        network.writeUsers("/Users/aadisudan/Desktop/CS62/socialnetwork/users.txt");
+        network.writeUsers("users.txt");
     }
 }
